@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace Aplicacion.Helper.Comunes
 {
-    public class ExepcionDominio
-    {
-    }
+    public class ExepcionDominio(string mensaje):Exception(mensaje);
 }

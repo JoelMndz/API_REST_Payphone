@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Aplicacion.Unit.Test.Caracteristicas
+namespace Aplicacion.Unit.Test.Caracteristicas.Billetera
 {
     public class CrearBilleteraTests
     {

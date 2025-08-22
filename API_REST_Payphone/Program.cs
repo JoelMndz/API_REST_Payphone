@@ -1,3 +1,4 @@
+using API_REST_Payphone.Middlewares;
 using API_REST_Payphone.Servicios;
 using Aplicacion;
 using Aplicacion.Helper.Servicios;
@@ -26,6 +27,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseMiddleware<ExepcionMiddleware>();
+app.UseAuthorization();
 app.UseAuthorization();
 
 app.MapControllers();

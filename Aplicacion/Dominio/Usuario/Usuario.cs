@@ -11,5 +11,14 @@ namespace Aplicacion.Dominio.Usuario
     {
         public string UserName { get; set; } = string.Empty;
         public string Clave { get; set; } = string.Empty;
+
+        public static Usuario Crear(string username, string clave)
+        {
+            return new Usuario()
+            {
+                UserName = username.Trim().ToUpper(),
+                Clave = clave
+            };
+        }
     }
 }
