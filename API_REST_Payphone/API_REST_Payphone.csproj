@@ -27,4 +27,7 @@
     <ProjectReference Include="..\Aplicacion\Aplicacion.csproj" />
   </ItemGroup>
 
+    <ItemGroup>
+	    <InternalsVisibleTo Include="Aplicacion.Integration.Tests" />
+    </ItemGroup>
 </Project>
