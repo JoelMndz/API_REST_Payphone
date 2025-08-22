@@ -15,16 +15,8 @@ namespace Aplicacion.Shared.Test.Factorys
             var faker = new Faker("es_MX");
             var cedulas = new List<string>
             {
-                "1710034065",
-                "0926687852",
-                "0102030405",
-                "1827364526",
-                "0523456783",
-                "2019283742",
-                "1425364787",
-                "0829384750",
-                "2223344456",
-                "0629183741"
+                "1312386921",
+                "1312386962"
             };
             return Billetera.Crear(
                 documentoIdentidad ?? faker.PickRandom(cedulas), 

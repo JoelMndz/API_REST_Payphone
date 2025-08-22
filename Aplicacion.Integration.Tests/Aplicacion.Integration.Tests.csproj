@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\API_REST_Payphone\API_REST_Payphone.csproj" />
+    <ProjectReference Include="..\Aplicacion.Shared.Test\Aplicacion.Shared.Test.csproj" />
   </ItemGroup>
 
   <ItemGroup>

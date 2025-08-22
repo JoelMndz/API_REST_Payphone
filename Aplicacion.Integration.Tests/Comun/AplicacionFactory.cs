@@ -1,4 +1,5 @@
 ﻿using Aplicacion.Infraestructura.Persistencia;
+using dotenv.net;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,8 @@ namespace Aplicacion.Integration.Tests.Comun
     {
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
+            DotEnv.Load(options: new DotEnvOptions(envFilePaths: [".env.test"]));
+
             builder.ConfigureAppConfiguration(cfg =>
             {
                 var integrationConfig = new ConfigurationBuilder()

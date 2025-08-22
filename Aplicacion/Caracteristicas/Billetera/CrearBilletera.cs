@@ -1,14 +1,14 @@
-﻿using Aplicacion.DTOs;
+﻿using Aplicacion.Dominio.Billetera;
+using Aplicacion.DTOs;
 using Aplicacion.Infraestructura.Persistencia;
 using AutoMapper;
 using FluentValidation;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using BilleteraDominio = Aplicacion.Dominio.Billetera.Billetera;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Throw;
+using Aplicacion.Dominio.Comunes;
 
 namespace Aplicacion.Caracteristicas.Billetera
 {
@@ -114,9 +114,14 @@ namespace Aplicacion.Caracteristicas.Billetera
                 this.contexto = contexto;
                 this.mapper = mapper;
             }
-            public Task<BilleteraDTO> Handle(Comando request, CancellationToken cancellationToken)
+            public async Task<BilleteraDTO> Handle(Comando request, CancellationToken cancellationToken)
             {
-                throw new NotImplementedException();
+                var billetera = BilleteraDominio.Crear(request.Datos.DocumentoIdentidad!, request.Datos.NombrePropietario!);
+                contexto.Billetera.Add(billetera);
+                (await contexto.SaveChangesAsync())
+                    .Throw(() => new Errores.NoSePuedieronGuardarLosCambios()).IfTrue(x => x == 0);
+
+                return mapper.Map<BilleteraDTO>(billetera);
             }
         }
     }
