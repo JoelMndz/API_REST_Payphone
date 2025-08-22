@@ -17,6 +17,11 @@ namespace Aplicacion.Infraestructura.Persistencia.Comunes
             entity.HasKey(e => e.Id);
 
             entity.Property(
+                    e => e.UsuarioCreacion)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            entity.Property(
                     e => e.FechaCreacion)
                 .IsRequired()
                 .HasColumnType("datetimeoffset");
@@ -35,6 +40,11 @@ namespace Aplicacion.Infraestructura.Persistencia.Comunes
                     e => e.TerminalModificacion)
                 .IsRequired()
                 .HasMaxLength(50);
+
+            entity.Property(
+                    e => e.UsuarioModificacion)
+                .IsRequired()
+                .HasMaxLength(100);
         }
     }
 }

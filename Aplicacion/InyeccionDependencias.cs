@@ -27,6 +27,7 @@ namespace Aplicacion
             },
             ServiceLifetime.Transient);
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 

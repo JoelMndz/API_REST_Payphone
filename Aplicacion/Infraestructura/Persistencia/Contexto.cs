@@ -1,5 +1,6 @@
 ﻿using Aplicacion.Dominio.Billetera;
 using Aplicacion.Dominio.Movimiento;
+using Aplicacion.Dominio.Usuario;
 using Aplicacion.Infraestructura.Persistencia.Comunes;
 using Aplicacion.Infraestructura.Persistencia.Configuracion;
 using Microsoft.EntityFrameworkCore;
@@ -24,12 +25,14 @@ namespace Aplicacion.Infraestructura.Persistencia
         }
 
         public virtual DbSet<Billetera> Billetera { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<Movimiento> Movimiento { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new BilleteraConfiguracion());
             modelBuilder.ApplyConfiguration(new MovimientoConfiguracion());
+            modelBuilder.ApplyConfiguration(new UsuarioConfiguracion());
             OnModelCreatingPartial(modelBuilder);
         }
 

@@ -9,9 +9,11 @@ namespace Aplicacion.Dominio.Comunes
 {
     public abstract class EntidadAuditable : EntidadBase, IEntidadAuditable
     {
+        public string UsuarioCreacion { get; set; } = string.Empty;
         public DateTimeOffset FechaCreacion { get; set; }
         public string TerminalCreacion { get; set; } =  string.Empty;
         public DateTimeOffset FechaModificacion { get; set; }
         public string TerminalModificacion { get; set; } = string.Empty;
+        public string UsuarioModificacion { get; set; } = string.Empty;
     }
 }

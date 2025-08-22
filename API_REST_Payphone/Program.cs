@@ -15,6 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IServicioTerminalActual, ServicioTerminalActual>();
+builder.Services.AddScoped<IServicioUsuarioActual, ServicioUsuarioActual>();
 builder.Services.AgregarAplicacion();
 var app = builder.Build();
 

@@ -15,7 +15,17 @@ namespace Aplicacion.Dominio.Billetera
         public string NombrePropietario { get; set; } = string.Empty;
         public EstadosBilletera Estado { get; set; }
         public double SaldoActual { get; set; }
-
         public List<Movimiento.Movimiento> Movimientos { get; set; } = new();
+
+        public static Billetera Crear(string documentoIdentidad, string nombrePropietario)
+        {
+            return new Billetera()
+            {
+                DocumentoIdentidad = documentoIdentidad.Trim(),
+                NombrePropietario = nombrePropietario.ToUpper().Trim(),
+                Estado = EstadosBilletera.Activa,
+                SaldoActual = 0
+            };
+        }
     }
 }
