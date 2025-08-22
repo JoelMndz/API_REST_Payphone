@@ -1,6 +1,7 @@
 # Gestión de billeteras
 La prueba técnica es una API REST la cual sirve para la gestion de billeteras y cuenta con autenticación(JWT).
-La arquitectura propuesta es el resultado de varios años implementando este tipo de soluciones tratando de optimizar tanto la arquitectura como el tiempo de desarrollo. Y por supuesto hay variaciones de la estructura de acuerdo a la naturaleza del problema.
+
+*La arquitectura propuesta es el resultado de varios años implementando este tipo de soluciones tratando de optimizar tanto la arquitectura como el tiempo de desarrollo. Y por supuesto hay variaciones de la estructura de acuerdo a la naturaleza del problema.*
 
 ## Arquitectura propuesta
 
