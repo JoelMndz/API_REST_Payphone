@@ -49,7 +49,7 @@ namespace Aplicacion.Caracteristicas.Autenticacion
             public async Task<UsuarioDTO> Handle(Comando request, CancellationToken cancellationToken)
             {
                 var usuario = await contexto.Usuario
-                    .FirstOrDefaultAsync(x => x.UserName == request.Datos.UserName!.Trim().ToUpper());
+                    .FirstOrDefaultAsync(x => x.UserName == request.Datos.UserName!.Trim().ToUpper() && !x.Eliminado);
                 usuario.ThrowIfNull(()=> new ErroresUsuario.CredencialesIncorrectas());
                 usuario.Clave.Throw(() => new ErroresUsuario.CredencialesIncorrectas())
                     .IfFalse(x => Criptografia.Verificar(request.Datos.Clave!, usuario.Clave));

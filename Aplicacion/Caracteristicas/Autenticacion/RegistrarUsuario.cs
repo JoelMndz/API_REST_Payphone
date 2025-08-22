@@ -70,7 +70,7 @@ namespace Aplicacion.Caracteristicas.Autenticacion
 
             private async Task ValidarUsernameExistente(string userName)
             {
-                var usuarioExistente = await contexto.Usuario.FirstOrDefaultAsync(x => x.UserName == userName.Trim().ToUpper());
+                var usuarioExistente = await contexto.Usuario.FirstOrDefaultAsync(x => x.UserName == userName.Trim().ToUpper() && !x.Eliminado);
                 if (usuarioExistente != null) throw new ErroresUsuario.ElUserNameYaExiste(userName);
             }
         }

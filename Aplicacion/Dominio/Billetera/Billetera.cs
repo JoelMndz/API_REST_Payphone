@@ -1,4 +1,5 @@
 ﻿using Aplicacion.Dominio.Billetera.Enums;
+using Aplicacion.Dominio.Billetera.Errores;
 using Aplicacion.Dominio.Comunes;
 using Aplicacion.Dominio.Movimiento;
 using System;
@@ -30,6 +31,7 @@ namespace Aplicacion.Dominio.Billetera
 
         public void Eliminar()
         {
+            if (SaldoActual > 0) throw new ErroresBilletera.NoSePuedeEliminarCuentaConSaldo(Id, SaldoActual);
             Eliminado = true;
         }
     }

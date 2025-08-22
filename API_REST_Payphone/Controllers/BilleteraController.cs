@@ -16,9 +16,15 @@ namespace API_REST_Payphone.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> ObtenerTodo()
+        public async Task<ActionResult> ObtenerTodasLasBilleteras()
         {
             var data = await Mediador.Send(new ObtenerTodasLasBilleteras.Consulta());
+            return Ok(data);
+        }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> EliminarBilletera(int id)
+        {
+            var data = await Mediador.Send(new EliminarBilletera.Comando(id));
             return Ok(data);
         }
     }
