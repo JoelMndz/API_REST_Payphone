@@ -13,10 +13,12 @@ namespace Aplicacion.Infraestructura.Persistencia.Comunes
     public class InterceptorEntidadAuditable: SaveChangesInterceptor
     {
         private readonly IServicioTerminalActual terminalActual;
+        private readonly IServicioUsuarioActual usuarioActual;
 
-        public InterceptorEntidadAuditable(IServicioTerminalActual terminalActual)
+        public InterceptorEntidadAuditable(IServicioTerminalActual terminalActual, IServicioUsuarioActual usuarioActual)
         {
             this.terminalActual = terminalActual;
+            this.usuarioActual = usuarioActual;
         }
 
         public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
@@ -40,14 +42,17 @@ namespace Aplicacion.Infraestructura.Persistencia.Comunes
                 switch (item.State)
                 {
                     case EntityState.Added:
+                        item.Entity.UsuarioCreacion = usuarioActual.Username;
                         item.Entity.FechaCreacion = DateTimeOffset.Now;
                         item.Entity.TerminalCreacion = this.terminalActual.DireccionIP;
                         item.Entity.FechaModificacion = DateTimeOffset.Now;
                         item.Entity.TerminalModificacion = this.terminalActual.DireccionIP;
+                        item.Entity.UsuarioModificacion = usuarioActual.Username;
                         break;
                     case EntityState.Modified:
                         item.Entity.FechaModificacion = DateTimeOffset.Now;
                         item.Entity.TerminalModificacion = this.terminalActual.DireccionIP;
+                        item.Entity.UsuarioModificacion = usuarioActual.Username;
                         break;
                 }
             }
