@@ -12,5 +12,10 @@ namespace Aplicacion.Helper.Comunes
         {
             return BCrypt.Net.BCrypt.HashPassword(texto, workFactor: 12);
         }
+
+        public static bool Verificar(string texto, string hash)
+        {
+            return BCrypt.Net.BCrypt.Verify(texto, hash);
+        }
     }
 }
