@@ -2,10 +2,13 @@ using API_REST_Payphone.Middlewares;
 using API_REST_Payphone.Servicios;
 using Aplicacion;
 using Aplicacion.Helper.Servicios;
+using Aplicacion.Infraestructura.Persistencia;
 using dotenv.net;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System;
 using System.Text;
 
 DotEnv.Load();
@@ -55,7 +58,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "Bearer"
     });
 
-    // Requerir el token en cada operación
+    // Requerir el token en cada operaciÃ³n
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -76,6 +79,12 @@ builder.Services.AddScoped<IServicioTerminalActual, ServicioTerminalActual>();
 builder.Services.AddScoped<IServicioUsuarioActual, ServicioUsuarioActual>();
 builder.Services.AgregarAplicacion();
 var app = builder.Build();
+// Ejecutar migraciones al inicio
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<Contexto>();
+    db.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
