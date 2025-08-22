@@ -14,5 +14,12 @@ namespace API_REST_Payphone.Controllers
             var data = await Mediador.Send(new RealizarMovimiento.Comando(request));
             return Ok(data);
         }
+
+        [HttpGet]
+        public async Task<ActionResult> ObtenerTodosLosMoSvimientos()
+        {
+            var data = await Mediador.Send(new ObtenerTodosLosMovimientos.Consulta());
+            return Ok(data);
+        }
     }
 }
