@@ -14,5 +14,12 @@ namespace API_REST_Payphone.Controllers
             var data = await Mediador.Send(new CrearBilletera.Comando(request));
             return Ok(data);
         }
+
+        [HttpGet]
+        public async Task<ActionResult> ObtenerTodo()
+        {
+            var data = await Mediador.Send(new ObtenerTodasLasBilleteras.Consulta());
+            return Ok(data);
+        }
     }
 }

@@ -27,5 +27,10 @@ namespace Aplicacion.Dominio.Billetera
                 SaldoActual = 0
             };
         }
+
+        public void Eliminar()
+        {
+            Eliminado = true;
+        }
     }
 }

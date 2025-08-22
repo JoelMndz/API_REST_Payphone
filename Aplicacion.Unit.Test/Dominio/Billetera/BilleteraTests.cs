@@ -17,5 +17,14 @@ namespace Aplicacion.Unit.Test.Dominio.Billetera
             sut.DocumentoIdentidad.ShouldBe(cedulaEsperada.Trim());
             sut.NombrePropietario.ShouldBe(nombreEsperado.Trim().ToUpper());
         }
+
+        [Fact]
+        public void Eliminar_OK()
+        {
+            var billetera = FactoryBilletera.Crear();
+            billetera.Eliminado.ShouldBeFalse();
+            billetera.Eliminar();
+            billetera.Eliminado.ShouldBeTrue();
+        }
     }
 }
