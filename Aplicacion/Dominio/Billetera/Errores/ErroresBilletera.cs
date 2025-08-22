@@ -11,5 +11,6 @@ namespace Aplicacion.Dominio.Billetera.Errores
     {
         public class NoExisteBilletera(int id):ExepcionDominio($"No existe la billetera con el id '{id}'");
         public class NoSePuedeEliminarCuentaConSaldo(int id, double saldo):ExepcionDominio($"No se puede eliminar la cuenta con el id '{id}', porque tiene de saldo actual ${saldo}");
+        public class NoSePuedeCancelarCuentaConSaldo(int id, double saldo):ExepcionDominio($"No se puede cancelar la cuenta con el id '{id}', porque tiene de saldo actual ${saldo}");
     }
 }

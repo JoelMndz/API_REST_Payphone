@@ -34,5 +34,13 @@ namespace Aplicacion.Dominio.Billetera
             if (SaldoActual > 0) throw new ErroresBilletera.NoSePuedeEliminarCuentaConSaldo(Id, SaldoActual);
             Eliminado = true;
         }
+
+        public void Editar(string nombrePropietario, EstadosBilletera estado)
+        {
+            NombrePropietario = nombrePropietario.ToUpper().Trim();
+            if(Estado != EstadosBilletera.Cerrada && estado == EstadosBilletera.Cerrada && SaldoActual > 0)
+                throw new ErroresBilletera.NoSePuedeCancelarCuentaConSaldo(Id, SaldoActual);
+            Estado = estado;
+        }
     }
 }

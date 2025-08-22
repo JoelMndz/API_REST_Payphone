@@ -21,10 +21,18 @@ namespace API_REST_Payphone.Controllers
             var data = await Mediador.Send(new ObtenerTodasLasBilleteras.Consulta());
             return Ok(data);
         }
+
         [HttpDelete("{id}")]
         public async Task<ActionResult> EliminarBilletera(int id)
         {
             var data = await Mediador.Send(new EliminarBilletera.Comando(id));
+            return Ok(data);
+        }
+
+        [HttpPatch]
+        public async Task<ActionResult> EditarBilletera(EditarBilletera.DatosEditarBilletera request)
+        {
+            var data = await Mediador.Send(new EditarBilletera.Comando(request));
             return Ok(data);
         }
     }
