@@ -15,13 +15,16 @@ namespace Aplicacion.Infraestructura.Persistencia
     public partial class Contexto:DbContext
     {
         private readonly InterceptorEntidadAuditable interceptorEntidadAuditable = null!;
+        private readonly InterceptorDespachadorEventos interceptorDespachadorEventos = null!;
         public Contexto() { }
         public Contexto(
             DbContextOptions<Contexto> options,
-            InterceptorEntidadAuditable interceptorEntidadAuditable
+            InterceptorEntidadAuditable interceptorEntidadAuditable,
+            InterceptorDespachadorEventos interceptorDespachadorEventos
             ) : base(options)
         {
             this.interceptorEntidadAuditable = interceptorEntidadAuditable;
+            this.interceptorDespachadorEventos = interceptorDespachadorEventos;
         }
 
         public virtual DbSet<Billetera> Billetera { get; set; }
@@ -39,6 +42,7 @@ namespace Aplicacion.Infraestructura.Persistencia
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.AddInterceptors(this.interceptorEntidadAuditable);
+            optionsBuilder.AddInterceptors(this.interceptorDespachadorEventos);
 
             base.OnConfiguring(optionsBuilder);
         }

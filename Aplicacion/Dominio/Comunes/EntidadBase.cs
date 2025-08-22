@@ -11,5 +11,14 @@ namespace Aplicacion.Dominio.Comunes
     {
         public int Id { get; set; }
         public bool Eliminado { get; set; }
+
+        private readonly List<IEventoDominio> eventos = new();
+
+        public IReadOnlyCollection<IEventoDominio> ObtenerEventosDominios() => this.eventos.AsReadOnly();
+
+        public void LimpiarEventosDominios() => this.eventos.Clear();
+
+        protected void AgregarEventoDominio(IEventoDominio eventoDominio) => this.eventos.Add(eventoDominio);
+
     }
 }

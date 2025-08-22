@@ -19,6 +19,7 @@ namespace Aplicacion
         public static IServiceCollection AgregarAplicacion(this IServiceCollection services)
         {
             services.AddScoped<InterceptorEntidadAuditable>();
+            services.AddScoped<InterceptorDespachadorEventos>();
             services.AddDbContext<Contexto>(options =>
             {
                 options.UseQueryTrackingBehavior(QueryTrackingBehavior.TrackAll);

@@ -25,6 +25,11 @@ La prueba técnica es una API REST la cual sirve para la gestion de billeteras y
 - Autenticacion con JWT
 - Test de integracion y unitarios
 - Sql Server
+-	Manejo de interceptores para quien agrega y edita registrando la Fecha y hora, Terminal (IP), Usuario
+- Centralizar los errores por dominio
+- Middleware en el API para gestionar todos los errores desde un solo punto
+- Manejo de eventos por dominio para el caso de eliminar una billetera registando un LOG
+
 
 # Para levantar el proyecto seguir estas indicaciones
 

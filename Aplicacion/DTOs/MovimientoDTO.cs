@@ -15,5 +15,6 @@ namespace Aplicacion.DTOs
         public int IdBilletera { get; set; }
         public string DocumentoIdentidad { get; set; } = string.Empty;
         public string NombrePropietario { get; set; } = string.Empty;
+        public DateTimeOffset FechaCreacion { get; set; }
     }
 }
