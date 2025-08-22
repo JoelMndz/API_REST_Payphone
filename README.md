@@ -1,5 +1,6 @@
-# Gestion de billeteras
+# Gestión de billeteras
 La prueba técnica es una API REST la cual sirve para la gestion de billeteras y cuenta con autenticación(JWT).
+La arquitectura propuesta es el resultado de varios años implementando este tipo de soluciones tratando de optimizar tanto la arquitectura como el tiempo de desarrollo. Y por supuesto hay variaciones de la estructura de acuerdo a la naturaleza del problema.
 
 ## Arquitectura propuesta
 
@@ -25,10 +26,10 @@ La prueba técnica es una API REST la cual sirve para la gestion de billeteras y
 - Autenticacion con JWT
 - Test de integracion y unitarios
 - Sql Server
--	Manejo de interceptores para quien agrega y edita registrando la Fecha y hora, Terminal (IP), Usuario
+-	Manejo de interceptores para auditoria registrando la Fecha, Terminal (IP) y Usuario
 - Centralizar los errores por dominio
 - Middleware en el API para gestionar todos los errores desde un solo punto
-- Manejo de eventos por dominio para el caso de eliminar una billetera registando un LOG
+- Manejo de eventos por dominio para el caso de eliminar una billetera registrando un LOG
 
 
 # Para levantar el proyecto seguir estas indicaciones
@@ -49,4 +50,5 @@ La prueba técnica es una API REST la cual sirve para la gestion de billeteras y
 dotnet tool install --global dotnet-ef
 dotnet ef database update --connection "Aqui va la cadena de la conexion de la DB de pruebas"
 ```
-- Listo Ahora ya puede ejecutar los test de integración
+- Listo Ahora ya puede ejecutar los tests de integración
+
