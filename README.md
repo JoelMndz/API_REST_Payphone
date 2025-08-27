@@ -46,8 +46,9 @@ La prueba técnica es una API REST la cual sirve para la gestion de billeteras y
 
 ### Aplicacion.Integration.Tests
 - En el archivo .env.test ubicar su cadena de conexion de SQL Server(Esta db debe ser diferente que la del API) en la propiedad URI_DB
-- Aqui si debe realizar la migracion con el siguiente comando:
+- Aqui si debe realizar la migracion con el siguiente comando (Situarse en la tarminal dentro del proyecto API_REST_Payphone donde esta la carpeta con las migraciones):
 ```bash
+cd API_REST_Payphone
 dotnet tool install --global dotnet-ef
 dotnet ef database update --connection "Aqui va la cadena de la conexion de la DB de pruebas"
 ```
